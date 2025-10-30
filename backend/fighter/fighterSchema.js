@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { FighterCalculations } from "../utils/calculations.js";
 
 const fighterSchema = new mongoose.Schema(
   {
@@ -167,6 +168,36 @@ const fighterSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+fighterSchema.pre("validate", function (next) {
+  console.log("Pre-validate hook triggered");
+
+  if (this.dateOfBirth) {
+    this.age = FighterCalculations.calculateAge(this.dateOfBirth);
+    console.log(`TIME TO HANG UP THE GLOVES... AGE: ${this.age}`);
+  }
+
+  if (
+    this.isModified("fighterCoreAttributes") ||
+    this.isModified("fighterTechnicalSkills") ||
+    this.isModified("fighterTraits")
+  ) {
+    this.overallRating = FighterCalculations.calculateOverallRating(this);
+    console.log(`YOU HAVE A OVERALL RATING OF: ${this.overallRating}`);
+  }
+
+  if (this.weight) {
+    console.log(
+      `DANIEL CORMIER IS HEAVIER, ALL GOOD DUDE, WEIGHT: ${this.weight}`
+    );
+    this.fighterWeightClass = FighterCalculations.getWeightClass(this.weight);
+    console.log(`YOU ARE IN THIS WEIGHT CLASS: ${this.fighterWeightClass}`);
+  } else {
+    console.log("NO WEIGHT CLASS");
+  }
+
+  next();
+});
 
 fighterSchema.index({ name: 1, surname: 1 });
 fighterSchema.index({ overallRating: -1 });
