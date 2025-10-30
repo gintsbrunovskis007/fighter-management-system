@@ -1,23 +1,23 @@
-class Style {
-  static BOXING = new FightingStyle("Boxing");
-  static MUAY_THAI = new FightingStyle("Muay Thai");
-  static KICKBOXING = new FightingStyle("Kickboxing");
-  static KARATE = new FightingStyle("Karate");
-  static TAEKWONDO = new FightingStyle("Taekwondo");
-  static BJJ = new FightingStyle("Brazilian Jiu-Jitsu");
-  static WRESTLING = new FightingStyle("Wrestling");
-  static JUDO = new FightingStyle("Judo");
-  static SAMBO = new FightingStyle("Sambo");
-  static FREESTYLE_WRESTLING = new FightingStyle("Freestyle Wrestling");
-  static GRECO_ROMAN = new FightingStyle("Greco-Roman Wrestling");
-  static SANDA = new FightingStyle("Sanda (Chinese Kickboxing)");
-  static CAPOEIRA = new FightingStyle("Capoeira");
-  static MMA = new FightingStyle("Mixed Martial Arts");
-  static JEET_KUNE_DO = new FightingStyle("Jeet Kune Do");
-  static KUNG_FU = new FightingStyle("Kung Fu");
-  static CATCH_WRESTLING = new FightingStyle("Catch Wrestling");
-  static SHOOTFIGHTING = new FightingStyle("Shootfighting");
-  static LETHWEI = new FightingStyle("Lethwei");
+export default class Style {
+  static BOXING = new Style("Boxing");
+  static MUAY_THAI = new Style("Muay Thai");
+  static KICKBOXING = new Style("Kickboxing");
+  static KARATE = new Style("Karate");
+  static TAEKWONDO = new Style("Taekwondo");
+  static BJJ = new Style("Brazilian Jiu-Jitsu");
+  static WRESTLING = new Style("Wrestling");
+  static JUDO = new Style("Judo");
+  static SAMBO = new Style("Sambo");
+  static FREESTYLE_WRESTLING = new Style("Freestyle Wrestling");
+  static GRECO_ROMAN = new Style("Greco-Roman Wrestling");
+  static SANDA = new Style("Sanda (Chinese Kickboxing)");
+  static CAPOEIRA = new Style("Capoeira");
+  static MMA = new Style("Mixed Martial Arts");
+  static JEET_KUNE_DO = new Style("Jeet Kune Do");
+  static KUNG_FU = new Style("Kung Fu");
+  static CATCH_WRESTLING = new Style("Catch Wrestling");
+  static SHOOTFIGHTING = new Style("Shootfighting");
+  static LETHWEI = new Style("Lethwei");
 
   constructor(styleName) {
     this.styleName = styleName;
@@ -27,5 +27,3 @@ class Style {
     return this.styleName;
   }
 }
-
-module.exports = Style;

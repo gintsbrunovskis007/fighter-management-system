@@ -1,4 +1,4 @@
-class TechnicalStats {
+export default class TechnicalStats {
   constructor(
     strikingAccuracy = 0,
     strikingDefense = 0,
@@ -93,5 +93,3 @@ class TechnicalStats {
     this.clinchSkill = clinchSkill;
   }
 }
-
-module.exports = TechnicalStats;

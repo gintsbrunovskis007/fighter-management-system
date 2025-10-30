@@ -1,4 +1,4 @@
-class FighterImage {
+export default class FighterImage {
   constructor(
     fullHeightImageUrl = "",
     closeUpImageUrl = "",
@@ -33,5 +33,3 @@ class FighterImage {
     this.headToWaistImageUrl = headToWaistImageUrl;
   }
 }
-
-module.exports = FighterImage;

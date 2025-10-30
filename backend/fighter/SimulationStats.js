@@ -1,4 +1,4 @@
-class SimulationStats {
+export default class SimulationStats {
   constructor(simulationRating = 0, currentHP = 0, energy = 0, morale = 0) {
     this.simulationRating = simulationRating;
     this.currentHP = currentHP;
@@ -38,5 +38,3 @@ class SimulationStats {
     this.morale = morale;
   }
 }
-
-module.exports = SimulationStats;

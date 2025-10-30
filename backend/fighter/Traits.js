@@ -1,4 +1,4 @@
-class Traits {
+export default class Traits {
   constructor(
     knockoutPower = 0,
     comebackKid = false,
@@ -43,5 +43,3 @@ class Traits {
     this.composure = composure;
   }
 }
-
-module.exports = Traits;

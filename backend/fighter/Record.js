@@ -1,4 +1,4 @@
-class FighterRecord {
+export default class FighterRecord {
   constructor(wins = 0, losses = 0, draws = 0, noContests = 0) {
     this.wins = wins;
     this.losses = losses;
@@ -38,5 +38,3 @@ class FighterRecord {
     this.noContests = noContests;
   }
 }
-
-module.exports = FighterRecord;

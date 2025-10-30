@@ -1,4 +1,4 @@
-class Gym {
+export default class Gym {
   constructor(
     id = null,
     gymName = "",
@@ -73,5 +73,3 @@ class Gym {
     this.fighters = fighters;
   }
 }
-
-module.exports = Gym;

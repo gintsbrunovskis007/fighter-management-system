@@ -1,4 +1,4 @@
-class CoreAttributes {
+export default class CoreAttributes {
   constructor(
     strength = 0,
     speed = 0,
@@ -93,5 +93,3 @@ class CoreAttributes {
     this.conditioning = conditioning;
   }
 }
-
-module.exports = CoreAttributes;

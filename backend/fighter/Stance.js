@@ -1,7 +1,7 @@
-class Stance {
-  static ORTHODOX = new FightingStance("Orthodox");
-  static SOUTHPAW = new FightingStance("Southpaw");
-  static SWITCH = new FightingStance("Switch");
+export default class Stance {
+  static ORTHODOX = new Stance("Orthodox");
+  static SOUTHPAW = new Stance("Southpaw");
+  static SWITCH = new Stance("Switch");
 
   constructor(stanceName) {
     this.stanceName = stanceName;
@@ -11,5 +11,3 @@ class Stance {
     return this.stanceName;
   }
 }
-
-module.exports = Stance;

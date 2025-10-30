@@ -1,18 +1,18 @@
-const FighterCountry = require("./Country");
-const FighterActivityStatus = require("./ActivityStatus");
-const FighterWeightClass = require("./WeightClass");
-const FightingStyle = require("./Style");
-const FightingStance = require("./Stance");
-const FighterRecord = require("./Record");
-const FighterImage = require("./Image");
-const FighterCoreAttributes = require("./CoreAttributes");
-const FighterTechnicalStats = require("./TechnicalStats");
-const FighterTraits = require("./Traits");
-const FighterSimulationStats = require("./SimulationStats");
-const FighterGym = require("./Gym");
-const FighterOrganization = require("./Organization");
+import FighterCountry from "./Country.js";
+import FighterActivityStatus from "./ActivityStatus.js";
+import FighterWeightClass from "./WeightClass.js";
+import FightingStyle from "./Style.js";
+import FightingStance from "./Stance.js";
+import FighterRecord from "./Record.js";
+import FighterImage from "./FighterImages.js";
+import FighterCoreAttributes from "./CoreAttributes.js";
+import FighterTechnicalStats from "./TechnicalSkills.js";
+import FighterTraits from "./Traits.js";
+import FighterSimulationStats from "./SimulationStats.js";
+import FighterGym from "./Gym.js";
+import FighterOrganization from "./Organization.js";
 
-class Fighter {
+export default class Fighter {
   constructor(
     id = null,
     overallRating = 0,
@@ -79,7 +79,6 @@ class Fighter {
     this.fighterSimulationStats = fighterSimulationStats;
   }
 
-  // Getters and Setters
   getId() {
     return this.id;
   }
@@ -297,5 +296,3 @@ class Fighter {
     this.fighterSimulationStats = fighterSimulationStats;
   }
 }
-
-module.exports = Fighter;
