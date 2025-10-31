@@ -1,69 +1,41 @@
 import express from "express";
-import Fighter from "../fighter/fighterSchema.js";
+import { fighterController } from "../controllers/fighterController.js";
+import {
+  uploadImage,
+  uploadSong,
+  handleUploadError,
+} from "../controllers/uploadController.js";
+import {
+  validateFighterData,
+  validateFileUploads,
+} from "../middleware/validation.js";
 
 const router = express.Router();
 
-// GET all fighters
-router.get("/", async (req, res) => {
-  try {
-    const fighters = await Fighter.find();
-    res.json(fighters);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+// GET routes
+router.get("/", fighterController.getAllFighters);
+// router.get("/active", fighterController.getActiveFighters);
+// router.get(
+//   "/weight-class/:weightClass",
+//   fighterController.getFightersByWeightClass
+// );
+router.get("/:id", fighterController.getFighterById);
 
-// GET fighter by ID
-router.get("/:id", async (req, res) => {
-  try {
-    const fighter = await Fighter.findById(req.params.id);
-    if (!fighter) {
-      return res.status(404).json({ message: "Fighter not found" });
-    }
-    res.json(fighter);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// POST create new fighter
-router.post("/", async (req, res) => {
-  try {
-    const fighter = new Fighter(req.body);
-    await fighter.save();
-    res.status(201).json(fighter);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+// POST create fighter
+router.post(
+  "/",
+  uploadImage.fields([{ name: "image", maxCount: 1 }]),
+  uploadSong.fields([{ name: "song", maxCount: 1 }]),
+  handleUploadError,
+  validateFileUploads,
+  validateFighterData,
+  fighterController.createFighter
+);
 
 // PUT update fighter
-router.put("/:id", async (req, res) => {
-  try {
-    const fighter = await Fighter.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!fighter) {
-      return res.status(404).json({ message: "Fighter not found" });
-    }
-    res.json(fighter);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+router.put("/:id", validateFighterData, fighterController.updateFighter);
 
-// DELETE
-router.delete("/:id", async (req, res) => {
-  try {
-    const fighter = await Fighter.findByIdAndDelete(req.params.id);
-    if (!fighter) {
-      return res.status(404).json({ message: "Fighter not found" });
-    }
-    res.json({ message: "Fighter deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+// DELETE fighter
+router.delete("/:id", fighterController.deleteFighter);
 
 export default router;

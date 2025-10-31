@@ -65,6 +65,34 @@ export class FighterCalculations {
     return age;
   }
 
+  static calculateAgeAtDate(dateOfBirth, date) {
+    const birth = new Date(dateOfBirth);
+    const target = new Date(date);
+    let age = target.getFullYear() - birth.getFullYear();
+    const monthDiff = target.getMonth() - birth.getMonth();
+    const dayDiff = target.getDate() - birth.getDate();
+
+    // If birthday hasnt happened yet in that year
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+    }
+
+    return age;
+  }
+
+  static validateCareerStart = (dateOfBirth, debutDate) => {
+    const debut = new Date(debutDate);
+    const birth = new Date(dateOfBirth);
+    const today = new Date();
+
+    // Debut cannot be before birth or in the future
+    if (debut < birth || debut > today) return false;
+
+    // Fighter must be at least 16 at debut
+    const ageAtDebut = this.calculateAgeAtDate(dateOfBirth, debutDate);
+    return ageAtDebut >= 16;
+  };
+
   static getWeightClass(weight) {
     return WeightClass.getWeightClass(weight);
   }
